@@ -29,6 +29,8 @@ visualizar el funcionamiento de la curva ADSR.
   ataque (A), caída (D), mantenimiento (S) y liberación (R).
 * Un instrumento *percusivo*, como una guitarra o un piano, en el que el sonido tenga un ataque rápido, no haya
   mantenimiemto y el sonido se apague lentamente.
+  **Respuesta:** 
+    Piano: ADSR_A=0.01; ADSR_D=0.5; ADSR_S=0.4; ADSR_R=0.1; N=40;
   - Para un instrumento de este tipo, tenemos dos situaciones posibles:
     * El intérprete mantiene la nota *pulsada* hasta su completa extinción.
     * El intérprete da por finalizada la nota antes de su completa extinción, iniciándose una disminución rápida del
@@ -37,7 +39,8 @@ visualizar el funcionamiento de la curva ADSR.
 * Un instrumento *plano*, como los de cuerdas frotadas (violines y semejantes) o algunos de viento. En ellos, el
   ataque es relativamente rápido hasta alcanzar el nivel de mantenimiento (sin sobrecarga), y la liberación también
   es bastante rápida.
-
+  **Respuesta:** 
+    Trompeta: ADSR_A=0.16; ADSR_D=0.16; ADSR_S=0.48; ADSR_R=0.16; N=40;
 Para los cuatro casos, deberá incluir una gráfica en la que se visualice claramente la curva ADSR. Deberá añadir la
 información necesaria para su correcta interpretación, aunque esa información puede reducirse a colocar etiquetas y
 títulos adecuados en la propia gráfica (se valorará positivamente esta alternativa).
