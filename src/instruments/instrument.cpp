@@ -1,6 +1,8 @@
 #include <iostream>
 #include "instrument_dumb.h"
 #include "seno.h"
+#include "piano.h"
+#include "trompeta.h"
 
 /*
   For each new instrument:
@@ -20,6 +22,10 @@ namespace upc {
       pInst = (Instrument *) new InstrumentDumb(parameters);
     } else if (name == "Seno") {
       pInst = (Instrument *) new Seno(parameters);
+    } else if (name == "Piano") {
+      pInst = (Instrument *) new Piano(parameters);
+    } else if (name == "Trompeta") {
+      pInst = (Instrument *) new Trompeta(parameters);
     }
     return pInst;
   }

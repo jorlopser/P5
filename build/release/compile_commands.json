@@ -85,6 +85,18 @@
   },
   {
     "directory": "/Users/dmolins/Desktop/david/uni/3B/PAV/lab/P5/build/release",
+    "command": "c++ -Isrc/25a6634@@synth@exe -Isrc -I../../src -I../../src/include -I../../src/synth -I../../src/instruments -I../../src/pav/docopt_cpp -Xclang -fcolor-diagnostics -pipe -Wall -Winvalid-pch -Wnon-virtual-dtor -std=c++11 -O3 -MD -MQ 'src/25a6634@@synth@exe/instruments_piano.cpp.o' -MF 'src/25a6634@@synth@exe/instruments_piano.cpp.o.d' -o 'src/25a6634@@synth@exe/instruments_piano.cpp.o' -c ../../src/instruments/piano.cpp",
+    "file": "../../src/instruments/piano.cpp",
+    "output": "src/25a6634@@synth@exe/instruments_piano.cpp.o"
+  },
+  {
+    "directory": "/Users/dmolins/Desktop/david/uni/3B/PAV/lab/P5/build/release",
+    "command": "c++ -Isrc/25a6634@@synth@exe -Isrc -I../../src -I../../src/include -I../../src/synth -I../../src/instruments -I../../src/pav/docopt_cpp -Xclang -fcolor-diagnostics -pipe -Wall -Winvalid-pch -Wnon-virtual-dtor -std=c++11 -O3 -MD -MQ 'src/25a6634@@synth@exe/instruments_trompeta.cpp.o' -MF 'src/25a6634@@synth@exe/instruments_trompeta.cpp.o.d' -o 'src/25a6634@@synth@exe/instruments_trompeta.cpp.o' -c ../../src/instruments/trompeta.cpp",
+    "file": "../../src/instruments/trompeta.cpp",
+    "output": "src/25a6634@@synth@exe/instruments_trompeta.cpp.o"
+  },
+  {
+    "directory": "/Users/dmolins/Desktop/david/uni/3B/PAV/lab/P5/build/release",
     "command": "c++ -Isrc/midi2scores/e3a398d@@midi2skini@exe -Isrc/midi2scores -I../../src/midi2scores -I../../src/midi2scores/include -Xclang -fcolor-diagnostics -pipe -Wall -Winvalid-pch -Wnon-virtual-dtor -std=c++11 -O3 -DOSXPC -m32 -arch x86_64 -MD -MQ 'src/midi2scores/e3a398d@@midi2skini@exe/src_midi2skini.cpp.o' -MF 'src/midi2scores/e3a398d@@midi2skini@exe/src_midi2skini.cpp.o.d' -o 'src/midi2scores/e3a398d@@midi2skini@exe/src_midi2skini.cpp.o' -c ../../src/midi2scores/src/midi2skini.cpp",
     "file": "../../src/midi2scores/src/midi2skini.cpp",
     "output": "src/midi2scores/e3a398d@@midi2skini@exe/src_midi2skini.cpp.o"

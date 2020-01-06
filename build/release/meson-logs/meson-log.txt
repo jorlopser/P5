@@ -1,4 +1,4 @@
-Build started at 2019-12-09T19:58:52.514973
+Build started at 2020-01-06T20:44:26.928080
 Main binary: /Library/Frameworks/Python.framework/Versions/3.7/bin/python3.7
 Build Options: -Dprefix=/Users/dmolins/PAV -Dlibdir=lib -Dbuildtype=release -Dbackend=ninja
 Python system: Darwin
@@ -24,8 +24,8 @@ Configuring Doxyfile using configuration
 Build targets in project: 5
 Found ninja-1.9.0 at /usr/local/bin/ninja
 Running compile:
-Working directory:  /var/folders/49/716dv32s5kx28m8yhz2ml51m0000gn/T/tmpwmbcf4w6
-Command line:  c++ /var/folders/49/716dv32s5kx28m8yhz2ml51m0000gn/T/tmpwmbcf4w6/testfile.cpp -o /var/folders/49/716dv32s5kx28m8yhz2ml51m0000gn/T/tmpwmbcf4w6/output.obj -pipe -c -std=c++11 
+Working directory:  /var/folders/49/716dv32s5kx28m8yhz2ml51m0000gn/T/tmpqna9nl6d
+Command line:  c++ /var/folders/49/716dv32s5kx28m8yhz2ml51m0000gn/T/tmpqna9nl6d/testfile.cpp -o /var/folders/49/716dv32s5kx28m8yhz2ml51m0000gn/T/tmpqna9nl6d/output.obj -pipe -c -std=c++11 
 
 Code:
  int i = static_cast<int>(0);
@@ -35,14 +35,14 @@ Compiler stderr:
  
 Compiler accepts -std=c++11: YES
 Running compile:
-Working directory:  /Users/dmolins/Desktop/david/uni/3B/PAV/lab/P5/build/release/meson-private/tmp51v6bam4
-Command line:  c++ /Users/dmolins/Desktop/david/uni/3B/PAV/lab/P5/build/release/meson-private/tmp51v6bam4/testfile.cpp -o /Users/dmolins/Desktop/david/uni/3B/PAV/lab/P5/build/release/meson-private/tmp51v6bam4/output.obj -pipe -c -O0 -fpermissive --print-search-dirs 
+Working directory:  /Users/dmolins/Desktop/david/uni/3B/PAV/lab/P5/build/release/meson-private/tmpao53bq9f
+Command line:  c++ /Users/dmolins/Desktop/david/uni/3B/PAV/lab/P5/build/release/meson-private/tmpao53bq9f/testfile.cpp -o /Users/dmolins/Desktop/david/uni/3B/PAV/lab/P5/build/release/meson-private/tmpao53bq9f/output.obj -pipe -c -O0 -fpermissive --print-search-dirs 
 
 Code:
  
 Compiler stdout:
  programs: =/Library/Developer/CommandLineTools/usr/bin
-libraries: =/Library/Developer/CommandLineTools/usr/lib/clang/10.0.1
+libraries: =/Library/Developer/CommandLineTools/usr/lib/clang/11.0.0
 
 Compiler stderr:
  
