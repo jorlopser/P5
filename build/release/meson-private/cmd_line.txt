@@ -1,0 +1,8 @@
+[options]
+prefix = /Users/dmolins/PAV
+libdir = lib
+buildtype = release
+backend = ninja
+
+[properties]
+
