@@ -102,11 +102,19 @@ const vector<float> & Seno::synthesize() {
   Cogiendo como modelo InstrumentDumb, hemos tenido que hacer las siguientes modificaciones:
   
     + En el método *synthesize*:
+    
       Ahora no recorremos la tabla de una muestra en una, sino que depende de un salto para que implemente la nota correcta (explicado justo abajo). Si este salto es mayor que el tamaño de la tabla, le restamos este valor (un periodo de la señal). Para que haga las operaciones correctamente, hemos tenido que cambiar la variable index a float en seno.h.
       
     + En el método *command*:
-      En InstrumentDumb reproducía todos los sonido como si fueran la misma nota. Para que lo haga correctamente, tenemos que calcular la frecuencia fundamental, que sacamos del enunciado de la práctica (p13):
+    
+      En InstrumentDumb reproducía todos los sonido como si fueran la misma nota. Para que lo haga correctamente, tenemos que calcular la frecuencia fundamental (f0), que sacamos del enunciado de la práctica (p13):
       > Note=69+12·log2(f0/440)
+      
+      Calculamos f0 para posteriormente calcular el salto mencionado en el punto anterior, a partir de la siguiente fórmula:
+      > F0= (fm*salto)/N
+      Donde fm es la frecuencia de muestreo (SamplingRate) y N es el número de muestras de un periodo de señal, que al mismo tiempo, es el tamaño de la tabla (x.size()).
+      
+      
   
 - Si ha implementado la síntesis por tabla almacenada en fichero externo, incluya a continuación el código del método
   `command()`.
