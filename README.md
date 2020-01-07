@@ -130,17 +130,17 @@ const vector<float> & Seno::synthesize() {
       En InstrumentDumb reproducía todos los sonido como si fueran la misma nota. Para que lo haga correctamente, tenemos que calcular la frecuencia fundamental (f0), que sacamos del enunciado de la práctica (p13):
       > Note=69+12·log2(f0/440)
       
-      Calculamos f0 para posteriormente calcular el salto mencionado en el punto anterior, a partir de la siguiente fórmula:
+Calculamos f0 para posteriormente calcular el salto mencionado en el punto anterior, a partir de la siguiente fórmula:
       > F0= (fm*salto)/N
       Donde fm es la frecuencia de muestreo (SamplingRate) y N es el número de muestras de un periodo de señal, que al mismo tiempo, es el tamaño de la tabla (x.size()).
       
-      Para hacer la gráfica, hemos añadido en seno.cpp código para que se genere un fichero con los valores de la señal generada y los valores de la tabla.
+   Para hacer la gráfica, hemos añadido en seno.cpp código para que se genere un fichero con los valores de la señal generada y los valores de la tabla.
       
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~.sh
 std::ofstream table_file ("table.txt"), x_file ("x.txt");
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
       
-  *Valores de la tabla*: Dentro del for del constructor, donde se genera la misma tabla.
+  **Valores de la tabla**: Dentro del for del constructor, donde se genera la misma tabla.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~.sh
 for (int i=0; i < N ; ++i) {
     tbl[i] = sin(phase);
@@ -149,7 +149,7 @@ for (int i=0; i < N ; ++i) {
   }
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-  *Valores de la señal generada*: Dentro del for del método synthesize(), donde se escriben los valores de la señal (x).
+  **Valores de la señal generada**: Dentro del for del método synthesize(), donde se escriben los valores de la señal (x).
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~.sh
 for (unsigned int i=0; i<x.size(); ++i) {
@@ -161,9 +161,14 @@ for (unsigned int i=0; i<x.size(); ++i) {
   }
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
       
-  Una vez generados los ficheros, hemos hecho un jupyter notebook con lenguaje python que lee los ficheros y representa en una misma figura las dos gráficas.
+  Una vez generados los ficheros, hemos hecho un jupyter notebook con lenguaje python que lee los ficheros y representa en una misma figura las dos gráficas (plotter.ipynb).
   
-  
+<img src="img/grafic_x_tabla.png" width="500" align="center">
+
+Aunque el resultado no acaba de estar bien. No se ve con claridad debido que se representa un segmento muy corto de señal y tabla. Si miramos el fichero table.txt solo tiene 30 muestras, esto es porque estamos escribiendo los valores del primer tic. Hemos intentado diferentes soluciones posibles pero que no las debemos haber implementado bien puesto que los resultados eran iguales o peores:
+- Utilizar el programa sin modificar para obtener, por un lado, la señal a una cierta frecuencia, y, por otro, la señal a la frecuencia natural de la tabla (aquella para la que la tabla se recorre muestra a muestra).
+- Modificar la constante BSIZE para que tu modificación del programa saque un segmento más largo.
+Los resultados que esperábamos, sin embargo, es que se vea que los valores que recorre la sinusoide generada se correponden con los valores presentes en la tabla.
   
 - Si ha implementado la síntesis por tabla almacenada en fichero externo, incluya a continuación el código del método
   `command()`.
@@ -174,6 +179,11 @@ for (unsigned int i=0; i<x.size(); ++i) {
   Deberá explicar detalladamente cómo se manifiestan los parámetros del efecto (frecuencia e índice de modulación) en
   la señal generada (se valorará que la explicación esté contenida en las propias gráficas, sin necesidad de
   *literatura*).
+  
+  (gràfica doremi_tromp_trem.wav)
+  
+  (gràfica doremi_tromp_vibr.wav)
+  
 - Si ha generado algún efecto por su cuenta, explique en qué consiste, cómo lo ha implementado y qué resultado ha
   producido. Incluya, en el directorio `work/ejemplos`, los ficheros necesarios para apreciar el efecto, e indique,
   a continuación, la orden necesaria para generar los ficheros de audio usando el programa `synth`.
