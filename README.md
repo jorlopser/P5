@@ -27,16 +27,36 @@ visualizar el funcionamiento de la curva ADSR.
 
 * Un instrumento con una envolvente ADSR genérica, para el que se aprecie con claridad cada uno de sus parámetros:
   ataque (A), caída (D), mantenimiento (S) y liberación (R).
+  
+  Para ello, utilizamos el instrumento InstrumentDumb proporcionado al inicio de la práctica:
+  
+  (gràfica doremi.wav)
+  
 * Un instrumento *percusivo*, como una guitarra o un piano, en el que el sonido tenga un ataque rápido, no haya
   mantenimiemto y el sonido se apague lentamente.
+  
+  Hemos escogido hacer un piano. El procedimiento, ha sido copiar los ficheros seno.cpp y seno.h (hecho en el apartado siguiente), cambiarles el nombre por piano.cpp y piano.h y añadir en instrumentos.cpp y meson.build este nuevo instrumento.
+  La diferencia respecto al "instrumento" seno son los parámetros ADSR, que son (hecho en el fichero new_instrument.orc):
+  
+  > Piano	ADSR_A=0.01; ADSR_D=0.5; ADSR_S=0; ADSR_R=0.5; N=40;
+  
+  (grafica doremi_piano.wav)
+  
   - Para un instrumento de este tipo, tenemos dos situaciones posibles:
     * El intérprete mantiene la nota *pulsada* hasta su completa extinción.
     * El intérprete da por finalizada la nota antes de su completa extinción, iniciándose una disminución rápida del
       sonido hasta su finalización.
   - Debera representar en esta memoria **ambos** posibles finales de la nota.
+  
 * Un instrumento *plano*, como los de cuerdas frotadas (violines y semejantes) o algunos de viento. En ellos, el
   ataque es relativamente rápido hasta alcanzar el nivel de mantenimiento (sin sobrecarga), y la liberación también
   es bastante rápida.
+  
+  Hemos escogido hacer una trompeta, siguiendo el mismo procedimiento que para el piano. Los parámetros para la trompeta son:
+  
+  > 1	Trompeta	ADSR_A=0.03; ADSR_D=0.4; ADSR_S=0.3; ADSR_R=0.3; N=40;
+  
+  (gràfica doremi_trompeta.wav)
 
 Para los cuatro casos, deberá incluir una gráfica en la que se visualice claramente la curva ADSR. Deberá añadir la
 información necesaria para su correcta interpretación, aunque esa información puede reducirse a colocar etiquetas y
@@ -114,7 +134,36 @@ const vector<float> & Seno::synthesize() {
       > F0= (fm*salto)/N
       Donde fm es la frecuencia de muestreo (SamplingRate) y N es el número de muestras de un periodo de señal, que al mismo tiempo, es el tamaño de la tabla (x.size()).
       
+      Para hacer la gráfica, hemos añadido en seno.cpp código para que se genere un fichero con los valores de la señal generada y los valores de la tabla.
       
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~.sh
+std::ofstream table_file ("table.txt"), x_file ("x.txt");
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      
+  *Valores de la tabla*: Dentro del for del constructor, donde se genera la misma tabla.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~.sh
+for (int i=0; i < N ; ++i) {
+    tbl[i] = sin(phase);
+    x_file << tbl[i] << std::endl;
+    phase += step;
+  }
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+  *Valores de la señal generada*: Dentro del for del método synthesize(), donde se escriben los valores de la señal (x).
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~.sh
+for (unsigned int i=0; i<x.size(); ++i) {
+    x[i] = A * tbl[index];
+    table_file << x[i] << std::endl;
+    index += salto;
+    while (index >= tbl.size())
+      index -= tbl.size();
+  }
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      
+  Una vez generados los ficheros, hemos hecho un jupyter notebook con lenguaje python que lee los ficheros y representa en una misma figura las dos gráficas.
+  
+  
   
 - Si ha implementado la síntesis por tabla almacenada en fichero externo, incluya a continuación el código del método
   `command()`.
