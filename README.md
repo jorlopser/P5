@@ -131,7 +131,6 @@ const vector<float> & Seno::synthesize() {
       > Note=69+12·log2(f0/440)
       
 Calculamos f0 para posteriormente calcular el salto mencionado en el punto anterior, a partir de la siguiente fórmula:
-      
       > F0= (fm*salto)/N
       
   Donde fm es la frecuencia de muestreo (SamplingRate) y N es el número de muestras de un periodo de señal, que al mismo tiempo, es el tamaño de la tabla (x.size()).
