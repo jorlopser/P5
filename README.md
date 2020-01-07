@@ -127,11 +127,11 @@ const vector<float> & Seno::synthesize() {
       
     + En el método *command*:
     
-      En InstrumentDumb reproducía todos los sonido como si fueran la misma nota. Para que lo haga correctamente, tenemos que calcular la frecuencia fundamental (f0), que sacamos del enunciado de la práctica (p13):
-      > Note=69+12·log2(f0/440)
+	En InstrumentDumb reproducía todos los sonido como si fueran la misma nota. Para que lo haga correctamente, tenemos que calcular la frecuencia fundamental (f0), que sacamos del enunciado de la práctica (p13):
+	> Note=69+12·log2(f0/440)
       
-Calculamos f0 para posteriormente calcular el salto mencionado en el punto anterior, a partir de la siguiente fórmula:
-      > F0= (fm*salto)/N
+	Calculamos f0 para posteriormente calcular el salto mencionado en el punto anterior, a partir de la siguiente fórmula:
+	> F0= (fm*salto)/N
       
   Donde fm es la frecuencia de muestreo (SamplingRate) y N es el número de muestras de un periodo de señal, que al mismo tiempo, es el tamaño de la tabla (x.size()).
       
