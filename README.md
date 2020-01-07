@@ -131,10 +131,12 @@ const vector<float> & Seno::synthesize() {
       > Note=69+12·log2(f0/440)
       
 Calculamos f0 para posteriormente calcular el salto mencionado en el punto anterior, a partir de la siguiente fórmula:
-      > F0= (fm*salto)/N
-      Donde fm es la frecuencia de muestreo (SamplingRate) y N es el número de muestras de un periodo de señal, que al mismo tiempo, es el tamaño de la tabla (x.size()).
       
-   Para hacer la gráfica, hemos añadido en seno.cpp código para que se genere un fichero con los valores de la señal generada y los valores de la tabla.
+      > F0= (fm*salto)/N
+      
+  Donde fm es la frecuencia de muestreo (SamplingRate) y N es el número de muestras de un periodo de señal, que al mismo tiempo, es el tamaño de la tabla (x.size()).
+      
+  Para hacer la gráfica, hemos añadido en seno.cpp código para que se genere un fichero con los valores de la señal generada y los valores de la tabla.
       
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~.sh
 std::ofstream table_file ("table.txt"), x_file ("x.txt");
@@ -166,8 +168,8 @@ for (unsigned int i=0; i<x.size(); ++i) {
 <img src="img/grafic_x_tabla.png" width="500" align="center">
 
 Aunque el resultado no acaba de estar bien. No se ve con claridad debido que se representa un segmento muy corto de señal y tabla. Si miramos el fichero table.txt solo tiene 30 muestras, esto es porque estamos escribiendo los valores del primer tic. Hemos intentado diferentes soluciones posibles pero que no las debemos haber implementado bien puesto que los resultados eran iguales o peores:
-- Utilizar el programa sin modificar para obtener, por un lado, la señal a una cierta frecuencia, y, por otro, la señal a la frecuencia natural de la tabla (aquella para la que la tabla se recorre muestra a muestra).
-- Modificar la constante BSIZE para que tu modificación del programa saque un segmento más largo.
+1) Utilizar el programa sin modificar para obtener, por un lado, la señal a una cierta frecuencia, y, por otro, la señal a la frecuencia natural de la tabla (aquella para la que la tabla se recorre muestra a muestra).
+2) Modificar la constante BSIZE para que tu modificación del programa saque un segmento más largo.
 Los resultados que esperábamos, sin embargo, es que se vea que los valores que recorre la sinusoide generada se correponden con los valores presentes en la tabla.
   
 - Si ha implementado la síntesis por tabla almacenada en fichero externo, incluya a continuación el código del método
